@@ -1,99 +1,109 @@
 # SPIDEY TRACKER - Rehm Edition
 
-A fan-made, non-commercial interactive replica of the Spidey Tracker from
-*Spider-Man: Brand New Day* (2026): the crowd-sourced Spider-Man sightings tracker built
-by Ned Leeds, presented as the handheld from the reference still. Rebuilt overnight in the
-"Mark 1" visual idiom: chunky glossy controls, comic accent cards, green hex LCD, SVG
-spider-web radar, container-query scaling, full sound.
+In *Spider-Man: Brand New Day* (2026), Ned Leeds builds a crowd-sourced Spider-Man sightings tracker. This is that handheld, rebuilt for the browser by one very dedicated web head: chunky pixel hardware, a living city that spawns new sightings, a full synth soundtrack, and one easter egg that earns the name.
 
-Not affiliated with Sony Pictures, Marvel Studios, or Samsung. Every graphic and sound is
-synthesized in code (DOM pixel sprites, SVG geometry, WebAudio oscillators). No copyrighted
-assets are bundled.
+![The Spidey Tracker, booted and locked on](docs/screenshot.png)
 
-## Run it
+**Play it live:** [rehmthegreat.me](https://rehmthegreat.me) or [rehmthegreat.github.io/spidey-tracker](https://rehmthegreat.github.io/spidey-tracker/)
 
-Double-click `index.html` (any modern browser). No server, no build step, no network.
-It boots itself; the slider on the top edge is power.
+[![Live site](https://img.shields.io/badge/live_site-rehmthegreat.me-00C8FF?style=flat-square)](https://rehmthegreat.me)
+[![License: MIT](https://img.shields.io/badge/license-MIT-55D977?style=flat-square)](LICENSE)
+[![Dependencies](https://img.shields.io/badge/dependencies-zero-F0685E?style=flat-square)](#how-it-works)
+[![Vanilla JS](https://img.shields.io/badge/vanilla_JS-100%25-FFC994?style=flat-square)](#how-it-works)
 
-## What it does
+## Quick start
 
-- **Boot**: NED-OS POST log with key clicks, logo flash + jingle, "CALIBRATING WEB GRID"
-  with a live progress bar, and a one-shot CRT power-on bloom when the screen lifts.
-  Any input after 0.4s skips.
-- **Live city map**: lower-Manhattan-style SVG world built from data (Hudson + East River,
-  irregular street grid with shaded city blocks, three diagonal boulevards, parks, pulsing
-  salmon hot zones, ten canon district labels, Empire State tower, YOU marker in Chelsea,
-  region labels on the outer banks, bridges over both rivers, and a MAP DATA 2028 stamp;
-  the world extends well past the visible clamps so the camera never shows void).
-  Drag to pan, scroll or +/- to zoom, arrow keys pan, TERRAIN flips a
-  green terrain scan that reveals the block layer, 3D VIEW tilts the map in perspective
-  (zoom in first), CENTER re-centers with a fly animation. Leave it alone for 45s and
-  an attract mode drifts the camera across hot zones like a store demo; any input wakes it.
-- **Sightings**: wandering spider tokens - red RUMORED, green CONFIRMED, blue EVENT. New
-  crowd reports drop every 9-22s with a ripple, spawn arpeggio and feed entry; rumors
-  relocate ("corrected") with a glitch blip. Tabs: 0 reset layers, S toggle sightings,
-  T toggle web-trace lines to nearby tokens.
-- **Alerts**: A.1 (confirmed) and A.2 (rumored) alert toggles; get close to a token and the
-  banner flips to a comic alert card with distance + handle. PROF 1/2/3 filter profiles.
-- **Lock-on**: tap a spider -> target card (type, district, DIST/BRG, ID, report quote) ->
-  TRACK: banner locks, a dashed ring locks on and follows the target, the radar draws a
-  gold vector to it, the gold tracking LED lights, the little Spider-Man figure bounces,
-  sonar pings every 1.2s, camera follows. PING fires a THWIP web-line from YOU to the
-  target and the target replies in chat.
-- **Split-flap readouts**: three-digit distance and bearing tiles flip toward the nearest
-  sighting; the heart chest counts signals within range; green hex LCD shows target IDs,
-  share codes, and the occasional idle flutter.
-- **Suspect file** (left portrait, or 1/2/3): SPIDER-MAN (?? match), FLASH T. (12%),
-  MR. HARRINGTON (9%) - Ned is hilariously off-scent. LOCATE flies to their last known
-  district.
-- **Panels** (MENU button or M): CHAT (send messages, web heads reply), ARCHIVE (sightings
-  by recency, GO to fly to one), SHARE (share code + scannable-style QR + copy),
-  REPORT SIGHTING (R: tap the map, mark CONFIRMED or RUMORED, you become the reporter),
-  VIDEOS (four 10s pixel "trailers" - skyline, mask close-up, web lines, swinging Spidey -
-  with the original chiptune), EVENTS (canon fan events with persisted RSVP), HELP,
-  SETTINGS (sound / scanlines / Samsung / data wipe), ACTIVITY LOG, SAMSUNG EXCLUSIVE
-  DOWNLOADS.
-- **The notifications gag**: ~8s after first boot the device asks the canon question.
-  YES has consequences (periodic SAMSUNG EXCLUSIVE toasts). Persisted.
-- **Post-credits easter egg**: as the SPIDER-MAN suspect, track a target and PING it five
-  times (or triple-click the big mask). SIGNAL LOST, glitch, rescan across a rotating globe,
-  a green blip past the moon, a figure drifting among the stars, and
-  SPIDER-MAN WILL RETURN. The caption under the device changes forever. Persisted.
-- **Sound everywhere**: 60+ synthesized cues and loops - UI blips, boot key clicks, jingle,
-  spawn arpeggio, alert stings, sonar, chat chime, chiptune theme, glitch zap, deep boom.
-  The round badge toggles sound; S does too. Starts on (synth, no assets); persisted.
-- **Hardware details**: camera glint in the bezel, breathing power LED (gold when
-  tracking), SMT-1 serial plate, a tiny spider patrolling the radar rim, screen shake on
-  SIGNAL LOST, and a console surprise for anyone who opens devtools (hi, Flash).
+Zero dependencies, zero build step, zero network calls:
+
+```bash
+git clone https://github.com/RehmTheGreat/spidey-tracker
+cd spidey-tracker
+```
+
+Open `index.html` in any modern browser and the device boots itself, even from `file://` with the Wi-Fi off: the fonts are embedded as base64 woff2 and nothing is fetched. Or skip the clone and [play it live](https://rehmthegreat.me).
+
+Sound is synthesized live with WebAudio, so it kicks in on your first click (browser autoplay rules, not ours).
+
+## The device tour
+
+- **Boot.** The NED-OS v2.8.1 POST log types out ("POWER AND RESPONSIBILITY... CHECK"), the logo lands with a jingle, CALIBRATING WEB GRID runs a live progress bar, and the screen lifts with a one-shot CRT power-on bloom. Any input skips it.
+- **The city.** An SVG lower-Manhattan-style world built entirely from data: Hudson and East River, 22 irregular avenues and 34 cross streets, three diagonal boulevards that cross the water as bridges, parks, ten canon district labels, an Empire State tower, pulsing salmon hot zones, and a MAP DATA 2028 stamp. The world extends past the camera clamps, so you never see void. Drag to pan, scroll or +/- to zoom.
+- **Sightings.** Green CONFIRMED, red RUMORED, and blue EVENT tokens wander the grid. New crowd reports drop every 9-22 seconds with a ripple and a spawn arpeggio, and rumors periodically get "corrected" and relocate.
+- **Lock-on.** Tap a spider for its report card, then TRACK: a dashed ring locks on and follows, the radar draws a gold vector, the tracking LED goes gold, sonar pings every 1.2 seconds, the camera follows, and the tiny Spider-Man figure bounces. PING fires a THWIP web-line from YOU to the target, and the target answers in chat.
+- **Readouts.** Split-flap style tiles carry the nearest sighting's distance and bearing, the pixel heart counts signals in range, and the green hex LCD shows target IDs, share codes, and the occasional idle flutter.
+- **Suspect file.** SPIDER-MAN (identity match ??), FLASH T. (12%), MR. HARRINGTON (9%). Ned is, respectfully, off-scent. LOCATE flies the camera to each suspect's last known district.
+- **Panels.** MENU (or M) opens chat where web heads reply, the sighting archive with fly-to, a share code with a pixel QR and copy-to-clipboard, a report-your-own-sighting flow, four 10-second pixel trailers scored by the chiptune, three fan events with RSVP, settings, the activity log, and SAMSUNG EXCLUSIVE DOWNLOADS.
+- **The notifications gag.** About eight seconds after your first boot, the device asks you the canon question. Saying YES has consequences. It remembers.
+- **Terrain and 3D.** TERRAIN re-tints the whole map green and brightens the block layer under the streets. 3D VIEW tilts the map into perspective, but it is zoom-gated: get close first.
+- **Attract mode.** Leave it alone for 45 seconds and the camera drifts between hot zones and landmarks like a store demo. Any input wakes it.
+- **Hardware details.** Camera lens in the bezel, breathing power LED, SMT-1 serial plate, a spider patrolling the radar rim, scanlines, a battery meter that really drains, and a console surprise for anyone who opens devtools. Hi, Flash.
+- **All synth, no samples.** Every key click, ping, jingle, alert sting, and the 8-bar chiptune theme comes from WebAudio oscillators and noise buffers. There are zero audio files in this repo.
+- **One easter egg.** See below. No spoilers.
 
 ## Controls
 
-Mouse/touch: everything is clickable and draggable. Keyboard: arrows pan, +/- zoom,
-Enter lock, Esc back, C center, T terrain, D 3D, S sound, F filter, R report, M menu,
-H help, L log, P power, 1/2/3 suspects.
+Everything is clickable, draggable, and keyboard-reachable.
 
-## Tech
+| Input | Action |
+| --- | --- |
+| Drag | Pan the map |
+| Scroll or +/- | Zoom |
+| Click a spider | Select it, open its target card |
+| TRACK / PING | Lock on and follow / THWIP the target |
+| Tabs 0 / S / T | Reset layers / toggle sightings / toggle web trace |
+| Power switch or P | Power on and off |
+| Arrow keys | Pan |
+| + / - | Zoom |
+| Enter or Space | Lock on, or run the first action in an open panel |
+| Esc or Backspace | Back / close / clear selection |
+| C | Re-center on YOU |
+| T | Terrain view |
+| D | 3D view (zoom in first) |
+| S | Sound on / off |
+| F | Cycle profile filters |
+| R | Report a sighting |
+| M | Menu |
+| H | Help |
+| L | Activity log |
+| 1 / 2 / 3 | Suspect file portraits |
 
-Zero dependencies, zero runtime network calls, file:// safe, no build:
+Focus outlines are visible, key controls carry ARIA labels or titles, and `prefers-reduced-motion` disables the decorative animation.
 
-- `index.html` - the device DOM (map viewport, banner, LCD, chest, buttons, modal, boot,
-  easter-egg overlays)
-- `css/style.css` - the entire look: container-query scaled (cqw) device, glossy buttons,
-  comic cards, LCD, radar, animations
-- `css/font.css` - Press Start 2P, Silkscreen 400/700, VT323 embedded as base64 woff2
-- `js/data.js` - all content: palette, boot script, districts, city geometry, world data,
-  sightings seed, feed lines, roster, toasts, video scenes, events, help, easter-egg copy
-- `js/audio.js` - WebAudio synth engine: cues, free-frequency blips, chiptune scheduler
-- `js/gui.js` - the application: sprites, SVG world + radar, tokens, sim, camera,
-  tracking, panels, boot, gag, easter egg, persistence
+## How it works
 
-(`js/engine.js`, `js/ui.js`, `js/map.js`, `js/app.js` are the earlier canvas architecture,
-kept for reference; they are not loaded. `.qa/` holds the headless QA tooling.)
+No framework, no dependencies, and no canvas game loop: the device is one responsive DOM unit scaled with container queries (`cqw` units), the city is a single inline SVG generated from data, and tokens, panels, and effects are plain DOM elements. Camera flights and token drift ride CSS transitions, and the pixel sprites (spider, heart, the little figure, suspect portraits) are rasterized to tiny canvases once at boot and served as CSS backgrounds. All audio is WebAudio: tuned one-shot cues plus a lookahead-scheduled 8-bar chiptune loop. Settings and progress persist in `localStorage`.
 
-## Verification
+```
+spidey-tracker/
+  index.html       the device DOM: screen, map viewport, LCD, chest, buttons, overlays
+  css/style.css    the entire look: cqw-scaled hardware, glossy controls, LCD, radar, animations
+  css/font.css     Press Start 2P, Silkscreen, VT323 embedded as base64 woff2 (offline, no CDN)
+  js/data.js       all content: palette, boot script, city geometry, districts, sightings,
+                   roster, feed lines, videos, events, easter egg copy
+  js/audio.js      the synth: tuned cues, the sonar loop, the lookahead-scheduled chiptune
+  js/gui.js        the app: SVG world, sprites, spawn sim, camera, tracking, panels, boot,
+                   Samsung gag, easter egg, persistence
+  docs/            screenshot
+```
 
-Headless Brave via CDP: zero console errors on load and 20s soak; a full click-through
-gauntlet (boot, select, track, ping + reply, filters, terrain, 3D, reset, Samsung popup,
-menu, chat, archive, share, suspect, videos, RSVP, help, settings, log, report flow,
-keyboard map, and the complete easter-egg sequence) passes with returned state evidence;
-palette pixel counts verified on rendered screenshots. QA scripts and screenshots in `.qa/`.
+It ships verified: a headless CDP gauntlet walked the build through 30 checks - boot, selection, lock-on, ping and reply, filters, terrain, 3D, the panels, the report flow, and the complete easter-egg sequence - with state evidence returned at every step, plus a soak run and a final load check. All green, zero console errors.
+
+## The post-credits easter egg (no spoilers)
+
+There is one, it is fully animated, and it ends the way these movies do: SPIDER-MAN WILL RETURN.
+
+The hint printed under the device is not a joke. Convince the tracker that you, personally, have found Spider-Man, or go triple-click the mask and see what Ned's OS does about it. Once you have seen it, the caption under the device changes. That change is saved to `localStorage`, so it stays changed.
+
+## Fan-made disclaimer
+
+This is a non-commercial fan project made for fun. It is not affiliated with, endorsed by, or connected to Sony Pictures, Marvel, or Samsung in any way. Every graphic and every sound is synthesized in code at runtime (DOM pixel sprites, SVG geometry, WebAudio oscillators): no copyrighted assets are bundled or distributed. Spider-Man and all related names and marks are trademarks of their respective owners. The chiptune is an original composition written for this replica.
+
+## Credits
+
+- Built by [Abdul Rehman](https://github.com/RehmTheGreat). This repo doubles as a portfolio piece: it is what "zero dependencies" looks like when someone takes it personally.
+- Fonts, embedded as base64 woff2 under the SIL Open Font License: [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P) by CodeMan38, [Silkscreen](https://fonts.google.com/specimen/Silkscreen) by Jason Kottke, and [VT323](https://fonts.google.com/specimen/VT323) by Peter Hull.
+- Inspired by the Spidey Tracker from *Spider-Man: Brand New Day* (2026). Go see it.
+
+---
+
+SPIDEY TRACKER // PROPERTY OF NED LEEDS. DO NOT TOUCH, FLASH.
