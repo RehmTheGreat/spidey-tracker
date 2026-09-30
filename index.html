@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spidey Tracker - Rehm Edition</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3.5' fill='%230d1220'/%3E%3Crect x='1' y='1' width='14' height='14' rx='3' fill='none' stroke='%231b46a0' stroke-width='.8'/%3E%3Cg fill='%23f05a55'%3E%3Crect x='6' y='3' width='4' height='3'/%3E%3Crect x='5' y='6' width='6' height='5'/%3E%3Crect x='6' y='11' width='4' height='2'/%3E%3Crect x='3' y='2' width='1' height='1'/%3E%3Crect x='2' y='3' width='1' height='2'/%3E%3Crect x='3' y='5' width='1' height='1'/%3E%3Crect x='12' y='2' width='1' height='1'/%3E%3Crect x='13' y='3' width='1' height='2'/%3E%3Crect x='12' y='5' width='1' height='1'/%3E%3Crect x='2' y='7' width='2' height='1'/%3E%3Crect x='1' y='9' width='3' height='1'/%3E%3Crect x='2' y='11' width='2' height='1'/%3E%3Crect x='12' y='7' width='2' height='1'/%3E%3Crect x='12' y='9' width='3' height='1'/%3E%3Crect x='12' y='11' width='2' height='1'/%3E%3C/g%3E%3Crect x='6' y='4' width='1' height='1' fill='%23fff'/%3E%3Crect x='9' y='4' width='1' height='1' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/font.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap"><div class="dev">
+<button class="pw" id="power" title="POWER" aria-label="Power"><i></i></button>
+<div class="scr">
+  <div class="cam"></div>
+  <div class="led"></div>
+
+  <div class="map" id="map"><div id="tl"><div id="w"></div></div>
+    <div class="hud"><i></i><b>SMT_1</b><span>SPIDEY TRACKER // NED LEEDS</span></div>
+    <div class="zb"><button class="b o" data-k="zi">+</button><button class="b o" data-k="zo">-</button></div>
+    <svg id="rd" viewBox="-50 -50 100 100"></svg>
+    <div class="rsp"></div>
+    <div id="tc"></div>
+    <div id="chz"></div>
+  </div>
+
+  <div class="bn"><div class="row"><div class="tls" id="tl1"></div><div class="face" id="mask" tabindex="0" role="button" aria-label="Ned mask, triple-click for a surprise" title="spider"></div><div class="tls" id="tl2"></div></div><div class="msg" id="bm">BOOTING...</div></div>
+
+  <div class="ch"><div class="lcd" id="lc">0x00000000</div>
+    <div class="chest"><i></i><span id="hn">0</span></div>
+    <div class="sub"><span id="subl">SIG 0 IN RANGE</span><span id="subr">BAT 100%</span></div>
+  </div>
+
+  <button class="bd on" data-k="snd" title="Sound"></button>
+  <div class="tabs"><button class="tab on" data-k="t0" title="Reset layers">0</button><button class="tab on" data-k="tS" title="Sightings">S</button><button class="tab on" data-k="tT" title="Web trace">T</button></div>
+  <div class="tom" id="tom" tabindex="0" role="button" aria-label="Suspect file" title="Suspect file"><div class="pf"></div><b>SUSPECT</b></div>
+  <div class="fig"><i></i></div>
+
+  <div class="bp">
+    <button class="b g on" data-k="a1" title="Confirmed alerts">A.1</button><button class="b g on" data-k="p1">PROF 1</button><button class="b o" data-k="ter">TERRAIN</button><button class="b o" data-k="chat">CHAT</button>
+    <button class="b r on" data-k="a2" title="Rumored alerts">A.2</button><button class="b g" data-k="p2">PROF 2</button><button class="b o d" data-k="d3" id="b3">3D VIEW</button><button class="b o" data-k="arc">ARCHIVE</button>
+    <span></span><button class="b g" data-k="p3">PROF 3</button><button class="b o" data-k="ctr" title="CENTER LOCATION">CENTER</button><button class="b o" data-k="menu">MENU</button>
+  </div>
+
+  <div id="md"><div class="mh"><span id="mt"></span><button class="b r" data-k="cl">X</button></div><div id="mb"></div></div>
+  <div id="toasts"></div>
+  <div id="off">POWERED OFF<br><br>FLIP THE SWITCH</div>
+  <div id="bt"><div class="logo">SPIDEY TRACKER</div><div class="ed">REHM EDITION</div><div class="bl"></div><div class="bar"><i></i></div><div class="cal">CALIBRATING WEB GRID...</div></div>
+  <div id="egg"></div>
+</div>
+</div></div>
+<p id="cap">SPIDEY TRACKER - interactive replica - booting</p>
+<p class="hint"><b>DRAG</b> PAN / <b>SCROLL or +-</b> ZOOM / <b>TAP A SPIDER</b> TO LOCK ON / <b>M</b> MENU / <b>H</b> HELP / <b>P</b> POWER<br>
+RED RUMORED / GREEN CONFIRMED / BLUE EVENT / TRACK A TARGET AND PING IT 5 TIMES AS THE SPIDER SUSPECT... OR TRIPLE-CLICK THE MASK</p>
+<script src="js/data.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/gui.js"></script>
+</body>
+</html>

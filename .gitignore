@@ -1,0 +1,18 @@
+# local QA and scratch - not part of the shipped product
+.qa/
+_envtest/
+reference/
+.zcode/
+*.log
+
+# earlier canvas architecture, kept locally for history only
+js/engine.js
+js/ui.js
+js/map.js
+js/app.js
+
+# internal design docs
+SPEC.md
+
+# windows reserved-name artifacts
+nul
