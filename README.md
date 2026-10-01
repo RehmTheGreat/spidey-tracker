@@ -4,9 +4,9 @@ In *Spider-Man: Brand New Day* (2026), Ned Leeds builds a crowd-sourced Spider-M
 
 ![The Spidey Tracker, booted and locked on](docs/screenshot.png)
 
-**Play it live:** [rehmthegreat.me](https://rehmthegreat.me) or [rehmthegreat.github.io/spidey-tracker](https://rehmthegreat.github.io/spidey-tracker/)
+**Play it live:** [spidey.rehmthegreat.me](https://spidey.rehmthegreat.me) or [rehmthegreat.github.io/spidey-tracker](https://rehmthegreat.github.io/spidey-tracker/)
 
-[![Live site](https://img.shields.io/badge/live_site-rehmthegreat.me-00C8FF?style=flat-square)](https://rehmthegreat.me)
+[![Live site](https://img.shields.io/badge/live_site-spidey.rehmthegreat.me-00C8FF?style=flat-square)](https://spidey.rehmthegreat.me)
 [![License: MIT](https://img.shields.io/badge/license-MIT-55D977?style=flat-square)](LICENSE)
 [![Dependencies](https://img.shields.io/badge/dependencies-zero-F0685E?style=flat-square)](#how-it-works)
 [![Vanilla JS](https://img.shields.io/badge/vanilla_JS-100%25-FFC994?style=flat-square)](#how-it-works)
@@ -20,7 +20,7 @@ git clone https://github.com/RehmTheGreat/spidey-tracker
 cd spidey-tracker
 ```
 
-Open `index.html` in any modern browser and the device boots itself, even from `file://` with the Wi-Fi off: the fonts are embedded as base64 woff2 and nothing is fetched. Or skip the clone and [play it live](https://rehmthegreat.me).
+Open `index.html` in any modern browser and the device boots itself, even from `file://` with the Wi-Fi off: the fonts are embedded as base64 woff2 and nothing is fetched. Or skip the clone and [play it live](https://spidey.rehmthegreat.me).
 
 Sound is synthesized live with WebAudio, so it kicks in on your first click (browser autoplay rules, not ours).
 
